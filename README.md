@@ -14,12 +14,17 @@ to access `/var/run/docker.sock` within the container, you'll get
 This repo contains a small SELinux module that fixes this issue,
 allowing containers to access the socket.
 
+## Support RHEL/CentOS 7
+
+This repo made to document a process of creating SELinux module for RHEL/CentOS 7. If you need 
+support for previous versions please use instruction from the original repo. 
+
 ## Usage
 
 Make sure you have the prerequisite SELinux utilities by doing (on
 RHEL/CentOS/Fedora/etc.):
 
-    yum install policycoreutils policycoreutils-python checkpolicy
+    dnf install policycoreutils policycoreutils-python-utils checkpolicy
 
 Then as root, just do
 
@@ -36,4 +41,4 @@ with
 
 Should you ever wish to remove the module, do
 
-    semodule -r dockersock
+    semodule -r dockersock  

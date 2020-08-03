@@ -1,12 +1,13 @@
 module dockersock 1.0;
 
 require {
-	type docker_var_run_t;
-	type docker_t;
-	type svirt_lxc_net_t;
-	class sock_file write;
+	type container_runtime_t;
+	type container_t;
 	class unix_stream_socket connectto;
 }
 
-allow svirt_lxc_net_t docker_t:unix_stream_socket connectto;
-allow svirt_lxc_net_t docker_var_run_t:sock_file write;
+#============= container_t ==============
+
+#!!!! The file '/run/docker.sock' is mislabeled on your system.
+#!!!! Fix with $ restorecon -R -v /run/docker.sock
+allow container_t container_runtime_t:unix_stream_socket connectto;
