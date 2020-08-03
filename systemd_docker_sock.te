@@ -1,0 +1,17 @@
+module systemd_docker_sock 1.0;
+
+require {
+	type systemd_hostnamed_t;
+        type container_file_t;
+        type unlabeled_t;
+        type init_t;
+        class file read;
+        class sock_file unlink;
+}
+
+#============= init_t ==============
+allow init_t container_file_t:sock_file unlink;
+
+#============= systemd_hostnamed_t ==============
+allow systemd_hostnamed_t unlabeled_t:file read;
+

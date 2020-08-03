@@ -42,3 +42,7 @@ with
 Should you ever wish to remove the module, do
 
     semodule -r dockersock  
+
+## Module for Systemd
+
+In case you have issue with systemd need access to docker.sock too use module `systemd_docker_sock.te`.
